@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Handy",
+  "productName": "AlefFlow",
   "version": "0.6.9",
-  "identifier": "com.pais.handy",
+  "identifier": "com.zyahav.aleflow",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",
