@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "AlefFlow",
+  "productName": "AleFlow",
   "version": "0.6.9",
   "identifier": "com.zyahav.aleflow",
   "build": {
