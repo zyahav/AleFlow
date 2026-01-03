@@ -57,6 +57,7 @@
       "hardenedRuntime": true,
       "minimumSystemVersion": "10.13",
       "entitlements": "Entitlements.plist",
+      "signingIdentity": "-",
       "dmg": {
         "windowSize": {
           "width": 600,
