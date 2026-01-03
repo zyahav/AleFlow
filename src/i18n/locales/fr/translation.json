@@ -1,5 +1,5 @@
 {
-  "_comment": "French translation for Handy. Contribute at: https://github.com/cjpais/Handy",
+  "_comment": "French translation for AleFlow. Contribute at: https://github.com/cjpais/AleFlow",
   "tray": {
     "settings": "Paramètres...",
     "checkUpdates": "Rechercher des mises à jour...",
@@ -55,7 +55,7 @@
     }
   },
   "modelSelector": {
-    "welcome": "Bienvenue sur Handy !",
+    "welcome": "Bienvenue sur AleFlow !",
     "downloadPrompt": "Téléchargez un modèle ci-dessous pour commencer la transcription.",
     "availableModels": "Modèles Disponibles",
     "downloadModels": "Télécharger des Modèles",
@@ -81,7 +81,7 @@
     "general": {
       "title": "Général",
       "shortcut": {
-        "title": "Raccourcis Handy",
+        "title": "Raccourcis AleFlow",
         "description": "Configurer les raccourcis clavier pour déclencher l'enregistrement de la reconnaissance vocale",
         "loading": "Chargement des raccourcis...",
         "none": "Aucun raccourci configuré",
@@ -147,7 +147,7 @@
       },
       "autostart": {
         "label": "Lancer au démarrage",
-        "description": "Démarrer automatiquement Handy lorsque vous vous connectez à votre ordinateur."
+        "description": "Démarrer automatiquement AleFlow lorsque vous vous connectez à votre ordinateur."
       },
       "overlay": {
         "title": "Position de la fenêtre d'enregistrement",
@@ -284,7 +284,7 @@
       },
       "updateChecks": {
         "label": "Vérifier les mises à jour",
-        "description": "Vérifier automatiquement les nouvelles versions de Handy"
+        "description": "Vérifier automatiquement les nouvelles versions de AleFlow"
       },
       "soundTheme": {
         "label": "Thème sonore",
@@ -339,11 +339,11 @@
       "title": "À propos",
       "version": {
         "title": "Version",
-        "description": "Version actuelle de Handy"
+        "description": "Version actuelle de AleFlow"
       },
       "appDataDirectory": {
         "title": "Emplacement des données de l'application",
-        "description": "Emplacement où Handy stocke ses données"
+        "description": "Emplacement où AleFlow stocke ses données"
       },
       "sourceCode": {
         "title": "Code source",
@@ -352,7 +352,7 @@
       },
       "supportDevelopment": {
         "title": "Soutenir le développement",
-        "description": "Aidez-nous à continuer à construire Handy",
+        "description": "Aidez-nous à continuer à construire AleFlow",
         "button": "Faire un don"
       },
       "acknowledgments": {
@@ -360,7 +360,7 @@
         "whisper": {
           "title": "Whisper.cpp",
           "description": "Inférence haute performance du modèle de reconnaissance vocale automatique Whisper d'OpenAI",
-          "details": "Handy utilise Whisper.cpp pour un traitement rapide et local de la parole en texte. Merci au travail incroyable de Georgi Gerganov et des contributeurs."
+          "details": "AleFlow utilise Whisper.cpp pour un traitement rapide et local de la parole en texte. Merci au travail incroyable de Georgi Gerganov et des contributeurs."
         }
       }
     }
@@ -403,7 +403,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Autorisations d'accessibilité requises",
-    "permissionsDescription": "Handy a besoin des autorisations d'accessibilité pour taper le texte transcrit.",
+    "permissionsDescription": "AleFlow a besoin des autorisations d'accessibilité pour taper le texte transcrit.",
     "openSettings": "Ouvrir les Préférences Système",
     "dismiss": "Ignorer"
   },
@@ -412,7 +412,7 @@
   },
   "appLanguage": {
     "title": "Langue de l'application",
-    "description": "Changer la langue de l'interface de Handy"
+    "description": "Changer la langue de l'interface de AleFlow"
   },
   "overlay": {
     "transcribing": "Transcription..."

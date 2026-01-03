@@ -54,7 +54,7 @@
     }
   },
   "modelSelector": {
-    "welcome": "Welcome to Handy!",
+    "welcome": "Welcome to AleFlow!",
     "downloadPrompt": "Download a model below to get started with transcription.",
     "availableModels": "Available Models",
     "downloadModels": "Download Models",
@@ -80,7 +80,7 @@
     "general": {
       "title": "General",
       "shortcut": {
-        "title": "Handy Shortcuts",
+        "title": "AleFlow Shortcuts",
         "description": "Configure keyboard shortcuts to trigger speech-to-text recording",
         "loading": "Loading shortcuts...",
         "none": "No shortcuts configured",
@@ -146,7 +146,7 @@
       },
       "autostart": {
         "label": "Launch on Startup",
-        "description": "Automatically start Handy when you log in to your computer."
+        "description": "Automatically start AleFlow when you log in to your computer."
       },
       "overlay": {
         "title": "Overlay Position",
@@ -283,7 +283,7 @@
       },
       "updateChecks": {
         "label": "Check for Updates",
-        "description": "Automatically check for new versions of Handy"
+        "description": "Automatically check for new versions of AleFlow"
       },
       "soundTheme": {
         "label": "Sound Theme",
@@ -338,11 +338,11 @@
       "title": "About",
       "version": {
         "title": "Version",
-        "description": "Current version of Handy"
+        "description": "Current version of AleFlow"
       },
       "appDataDirectory": {
         "title": "App Data Directory",
-        "description": "Location where Handy stores its data"
+        "description": "Location where AleFlow stores its data"
       },
       "sourceCode": {
         "title": "Source Code",
@@ -351,7 +351,7 @@
       },
       "supportDevelopment": {
         "title": "Support Development",
-        "description": "Help us continue building Handy",
+        "description": "Help us continue building AleFlow",
         "button": "Donate"
       },
       "acknowledgments": {
@@ -359,7 +359,7 @@
         "whisper": {
           "title": "Whisper.cpp",
           "description": "High-performance inference of OpenAI's Whisper automatic speech recognition model",
-          "details": "Handy uses Whisper.cpp for fast, local speech-to-text processing. Thanks to the amazing work by Georgi Gerganov and contributors."
+          "details": "AleFlow uses Whisper.cpp for fast, local speech-to-text processing. Thanks to the amazing work by Georgi Gerganov and contributors."
         }
       }
     }
@@ -402,7 +402,7 @@
   },
   "accessibility": {
     "permissionsRequired": "Accessibility Permissions Required",
-    "permissionsDescription": "Handy needs accessibility permissions to type transcribed text.",
+    "permissionsDescription": "AleFlow needs accessibility permissions to type transcribed text.",
     "openSettings": "Open System Settings",
     "dismiss": "Dismiss"
   },
@@ -411,7 +411,7 @@
   },
   "appLanguage": {
     "title": "Application Language",
-    "description": "Change the language of the Handy interface"
+    "description": "Change the language of the AleFlow interface"
   },
   "overlay": {
     "transcribing": "Transcribing..."
