@@ -35,7 +35,7 @@ Before you begin, ensure you have the following installed:
 3. **Add upstream remote**:
 
    ```bash
-   git remote add upstream git@github.com:cjpais/AleFlow.git
+   git remote add upstream git@github.com:zyahav/AleFlow.git
    ```
 
 4. **Install dependencies**:
@@ -48,7 +48,7 @@ Before you begin, ensure you have the following installed:
 
    ```bash
    mkdir -p src-tauri/resources/models
-   curl -o src-tauri/resources/models/silero_vad_v4.onnx https://blob.aleflow.computer/silero_vad_v4.onnx
+   curl -o src-tauri/resources/models/silero_vad_v4.onnx https://blob.handy.computer/silero_vad_v4.onnx
    ```
 
 6. **Run in development mode**:
@@ -86,8 +86,8 @@ For more details, see the Architecture section in [README.md](README.md) or [AGE
 
 ### Before Submitting a Bug Report
 
-1. **Search existing issues** at [github.com/cjpais/AleFlow/issues](https://github.com/cjpais/AleFlow/issues)
-2. **Check discussions** at [github.com/cjpais/AleFlow/discussions](https://github.com/cjpais/AleFlow/discussions)
+1. **Search existing issues** at [github.com/zyahav/AleFlow/issues](https://github.com/zyahav/AleFlow/issues)
+2. **Check discussions** at [github.com/zyahav/AleFlow/discussions](https://github.com/zyahav/AleFlow/discussions)
 3. **Try the latest release** to see if the issue has been fixed
 4. **Enable debug mode** (`Cmd/Ctrl+Shift+D`) to gather diagnostic information
 
@@ -119,14 +119,14 @@ We use GitHub Discussions for feature requests rather than issues. This keeps is
 
 ### Before Suggesting a Feature
 
-1. **Search existing discussions** at [github.com/cjpais/AleFlow/discussions](https://github.com/cjpais/AleFlow/discussions)
+1. **Search existing discussions** at [github.com/zyahav/AleFlow/discussions](https://github.com/zyahav/AleFlow/discussions)
 2. **Check common feature requests**:
-   - [Post-processing / Editing Transcripts](https://github.com/cjpais/Handy/discussions/168)
-   - [Keyboard Shortcuts / Hotkeys](https://github.com/cjpais/Handy/discussions/211)
+   - [Post-processing / Editing Transcripts](https://github.com/zyahav/AleFlow/discussions/168)
+   - [Keyboard Shortcuts / Hotkeys](https://github.com/zyahav/AleFlow/discussions/211)
 
 ### Submitting a Feature Request
 
-1. Go to [Discussions](https://github.com/cjpais/AleFlow/discussions)
+1. Go to [Discussions](https://github.com/zyahav/AleFlow/discussions)
 2. Click "New discussion"
 3. Choose the appropriate category (Ideas, Feature Requests, etc.)
 4. Describe your feature idea including:
@@ -142,14 +142,14 @@ We use GitHub Discussions for feature requests rather than issues. This keeps is
 **This is critical:** Before writing any code, please do the following:
 
 1. **Search existing issues and PRs** - Check both open AND closed issues and pull requests. Someone may have already addressed this, or there may be a reason it was closed.
-   - [Open issues](https://github.com/cjpais/AleFlow/issues)
-   - [Closed issues](https://github.com/cjpais/AleFlow/issues?q=is%3Aissue+is%3Aclosed)
-   - [Open PRs](https://github.com/cjpais/AleFlow/pulls)
-   - [Closed PRs](https://github.com/cjpais/AleFlow/pulls?q=is%3Apr+is%3Aclosed)
+   - [Open issues](https://github.com/zyahav/AleFlow/issues)
+   - [Closed issues](https://github.com/zyahav/AleFlow/issues?q=is%3Aissue+is%3Aclosed)
+   - [Open PRs](https://github.com/zyahav/AleFlow/pulls)
+   - [Closed PRs](https://github.com/zyahav/AleFlow/pulls?q=is%3Apr+is%3Aclosed)
 
 2. **If something was previously closed** - If you want to revisit a closed issue or PR, you need to:
    - Provide a strong argument for why it should be reconsidered
-   - Gather community feedback first via [Discussions](https://github.com/cjpais/AleFlow/discussions)
+   - Gather community feedback first via [Discussions](https://github.com/zyahav/AleFlow/discussions)
    - Link to that discussion in your PR
 
 3. **Get community feedback for features** - PRs with demonstrated community interest are **much more likely to be merged**. Start a discussion, get feedback, and link to it in your PR. This helps ensure AleFlow stays focused and useful for the most people without becoming bloated.
@@ -209,7 +209,7 @@ Community feedback is essential to keeping AleFlow the best it can be for everyo
    ```
 
 7. **Create a Pull Request**:
-   - Go to the [AleFlow repository](https://github.com/cjpais/AleFlow)
+   - Go to the [AleFlow repository](https://github.com/zyahav/AleFlow)
    - Click "New Pull Request"
    - Select your fork and branch
    - Fill out the PR template completely, including:
@@ -220,7 +220,7 @@ Community feedback is essential to keeping AleFlow the best it can be for everyo
      - Screenshots/videos if applicable
      - Breaking changes (if any)
 
-   **Remember:** PRs with community support are prioritized. If you haven't already, start a [discussion](https://github.com/cjpais/AleFlow/discussions) to gather feedback before or alongside your PR. It is not explicitly required to gather feedback, but it certainly helps your PR get merged faster.
+   **Remember:** PRs with community support are prioritized. If you haven't already, start a [discussion](https://github.com/zyahav/AleFlow/discussions) to gather feedback before or alongside your PR. It is not explicitly required to gather feedback, but it certainly helps your PR get merged faster.
 
 ### Code Style Guidelines
 
@@ -294,8 +294,8 @@ Look for issues labeled `good first issue` or `help wanted` if you're new to the
 ## 📞 Getting Help
 
 - **Discord**: Join our [Discord community](https://discord.com/invite/WVBeWsNXK4)
-- **Discussions**: Ask questions in [GitHub Discussions](https://github.com/cjpais/AleFlow/discussions)
-- **Email**: Reach out at [contact@aleflow.computer](mailto:contact@aleflow.computer)
+- **Discussions**: Ask questions in [GitHub Discussions](https://github.com/zyahav/AleFlow/discussions)
+- **Email**: Reach out at [contact@handy.computer](mailto:contact@handy.computer)
 
 ## 📜 License
 
