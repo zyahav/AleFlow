@@ -1,3 +1,7 @@
+:root, html, body {
+  background-color: transparent !important;
+}
+
 .recording-overlay {
   height: 36px;
   width: 172px;
