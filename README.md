@@ -38,7 +38,7 @@ The process is entirely local:
 
 ### Installation
 
-1. Download the latest release from the [releases page](https://github.com/cjpais/Handy/releases) or the [website](https://handy.computer)
+1. Download the latest release from the [Releases page](https://github.com/zyahav/AleFlow/releases)
 2. Install the application following platform-specific instructions
 3. Launch AleFlow and grant necessary system permissions (microphone, accessibility)
 4. Configure your preferred keyboard shortcuts in Settings
