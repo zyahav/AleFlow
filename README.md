@@ -1,27 +1,29 @@
-# Handy
+# AleFlow
 
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/WVBeWsNXK4)
 
 **A free, open source, and extensible speech-to-text application that works completely offline.**
 
-Handy is a cross-platform desktop application built with Tauri (Rust + React/TypeScript) that provides simple, privacy-focused speech transcription. Press a shortcut, speak, and have your words appear in any text field—all without sending your voice to the cloud.
+AleFlow is a cross-platform desktop application built with Tauri (Rust + React/TypeScript) that provides simple, privacy-focused speech transcription. Press a shortcut, speak, and have your words appear in any text field—all without sending your voice to the cloud.
 
-## Why Handy?
+> **Note:** AleFlow is a fork of [Handy](https://github.com/cjpais/Handy) by CJ Pais. We gratefully acknowledge the original work.
 
-Handy was created to fill the gap for a truly open source, extensible speech-to-text tool. As stated on [handy.computer](https://handy.computer):
+## Why AleFlow?
 
-- **Free**: Accessibility tooling belongs in everyone's hands, not behind a paywall
-- **Open Source**: Together we can build further. Extend Handy for yourself and contribute to something bigger
-- **Private**: Your voice stays on your computer. Get transcriptions without sending audio to the cloud
-- **Simple**: One tool, one job. Transcribe what you say and put it into a text box
+AleFlow was created to provide a specialized, student-focused speech-to-text tool.
 
-Handy isn't trying to be the best speech-to-text app—it's trying to be the most forkable one.
+- **Free**: Accessibility tooling belongs in everyone's hands.
+- **Open Source**: Built on the strong foundation of Handy.
+- **Private**: Your voice stays on your computer.
+- **Simple**: One tool, one job.
+
+AleFlow isn't trying to be the best speech-to-text app—it's trying to be the most accessible one.
 
 ## How It Works
 
 1. **Press** a configurable keyboard shortcut to start/stop recording (or use push-to-talk mode)
 2. **Speak** your words while the shortcut is active
-3. **Release** and Handy processes your speech using Whisper
+3. **Release** and AleFlow processes your speech using Whisper
 4. **Get** your transcribed text pasted directly into whatever app you're using
 
 The process is entirely local:
@@ -38,7 +40,7 @@ The process is entirely local:
 
 1. Download the latest release from the [releases page](https://github.com/cjpais/Handy/releases) or the [website](https://handy.computer)
 2. Install the application following platform-specific instructions
-3. Launch Handy and grant necessary system permissions (microphone, accessibility)
+3. Launch AleFlow and grant necessary system permissions (microphone, accessibility)
 4. Configure your preferred keyboard shortcuts in Settings
 5. Start transcribing!
 
@@ -98,7 +100,7 @@ npm run test:frontend
  
 ## Architecture
 
-Handy is built as a Tauri application combining:
+AleFlow is built as a Tauri application combining:
 
 - **Frontend**: React + TypeScript with Tailwind CSS for the settings UI
 - **Backend**: Rust for system integration, audio processing, and ML inference
@@ -112,7 +114,7 @@ Handy is built as a Tauri application combining:
 
 ### Debug Mode
 
-Handy includes an advanced debug mode for development and troubleshooting. Access it by pressing:
+AleFlow includes an advanced debug mode for development and troubleshooting. Access it by pressing:
 
 - **macOS**: `Cmd+Shift+D`
 - **Windows/Linux**: `Ctrl+Shift+D`
@@ -150,16 +152,16 @@ For reliable text input on Linux, install the appropriate tool for your display 
 - **Wayland**: Install `wtype` (preferred) or `dotool` for text input to work correctly
 - **dotool setup**: Requires adding your user to the `input` group: `sudo usermod -aG input $USER` (then log out and back in)
 
-Without these tools, Handy falls back to enigo which may have limited compatibility, especially on Wayland.
+Without these tools, AleFlow falls back to enigo which may have limited compatibility, especially on Wayland.
 
 **Other Notes:**
 
-- The recording overlay is disabled by default on Linux (`Overlay Position: None`) because certain compositors treat it as the active window. When the overlay is visible it can steal focus, which prevents Handy from pasting back into the application that triggered transcription. If you enable the overlay anyway, be aware that clipboard-based pasting might fail or end up in the wrong window.
+- The recording overlay is disabled by default on Linux (`Overlay Position: None`) because certain compositors treat it as the active window. When the overlay is visible it can steal focus, which prevents AleFlow from pasting back into the application that triggered transcription. If you enable the overlay anyway, be aware that clipboard-based pasting might fail or end up in the wrong window.
 - If you are having trouble with the app, running with the environment variable `WEBKIT_DISABLE_DMABUF_RENDERER=1` may help
-- You can manage global shortcuts outside of Handy and still control the app via signals. Sending `SIGUSR2` to the Handy process toggles recording on/off, which lets Wayland window managers or other hotkey daemons keep ownership of keybindings. Example (Sway):
+- You can manage global shortcuts outside of AleFlow and still control the app via signals. Sending `SIGUSR2` to the AleFlow process toggles recording on/off, which lets Wayland window managers or other hotkey daemons keep ownership of keybindings. Example (Sway):
 
   ```ini
-  bindsym $mod+o exec pkill -USR2 -n handy
+  bindsym $mod+o exec pkill -USR2 -n aleflow
   ```
 
   `pkill` here simply delivers the signal—it does not terminate the process.
@@ -172,7 +174,7 @@ Without these tools, Handy falls back to enigo which may have limited compatibil
 
 ### System Requirements/Recommendations
 
-The following are recommendations for running Handy on your own machine. If you don't meet the system requirements, the performance of the application may be degraded. We are working on improving the performance across all kinds of computers and hardware.
+The following are recommendations for running AleFlow on your own machine. If you don't meet the system requirements, the performance of the application may be degraded. We are working on improving the performance across all kinds of computers and hardware.
 
 **For Whisper Models:**
 
@@ -205,7 +207,7 @@ We're actively working on several features and improvements. Contributions and f
 
 **Opt-in Analytics:**
 
-- Collect anonymous usage data to help improve Handy
+- Collect anonymous usage data to help improve AleFlow
 - Privacy-first approach with clear opt-in
 
 **Settings Refactoring:**
@@ -222,11 +224,11 @@ We're actively working on several features and improvements. Contributions and f
 
 ### Manual Model Installation (For Proxy Users or Network Restrictions)
 
-If you're behind a proxy, firewall, or in a restricted network environment where Handy cannot download models automatically, you can manually download and install them. The URLs are publicly accessible from any browser.
+If you're behind a proxy, firewall, or in a restricted network environment where AleFlow cannot download models automatically, you can manually download and install them. The URLs are publicly accessible from any browser.
 
 #### Step 1: Find Your App Data Directory
 
-1. Open Handy settings
+1. Open AleFlow settings
 2. Navigate to the **About** section
 3. Copy the "App Data Directory" path shown there, or use the shortcuts:
    - **macOS**: `Cmd+Shift+D` to open debug menu
@@ -304,11 +306,11 @@ Final structure should look like:
 
 - For Parakeet models, the extracted directory name **must** match exactly as shown above
 - Do not rename the `.bin` files for Whisper models—use the exact filenames from the download URLs
-- After placing the files, restart Handy to detect the new models
+- After placing the files, restart AleFlow to detect the new models
 
 #### Step 5: Verify Installation
 
-1. Restart Handy
+1. Restart AleFlow
 2. Open Settings → Models
 3. Your manually installed models should now appear as "Downloaded"
 4. Select the model you want to use and test transcription
@@ -352,8 +354,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **whisper.cpp and ggml** for amazing cross-platform whisper inference/acceleration
 - **Silero** for great lightweight VAD
 - **Tauri** team for the excellent Rust-based app framework
-- **Community contributors** helping make Handy better
+- **Original Handy Project** by CJ Pais for the core technology.
 
 ---
 
-_"Your search for the right speech-to-text tool can end here—not because Handy is perfect, but because you can make it perfect for you."_
+_"Your search for the right speech-to-text tool can end here—not because AleFlow is perfect, but because you can make it perfect for you."_
