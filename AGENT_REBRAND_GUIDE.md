@@ -1,7 +1,7 @@
 # AGENT_REBRAND_GUIDE.md
 
 **SYSTEM INSTRUCTION FOR AI AGENTS:**
-If a user asks you to "white label" or "rebrand" this repository, follow this exact guide. Your goal is to guide the user through the process and execute the technical changes.
+This document is a "Master Protocol" for white-labeling this application. If a user asks you to "white label" or "rebrand" this repository, you must follow this guide step-by-step. Your goal is to interview the user for their brand details and then execute the changes.
 
 ---
 
@@ -37,7 +37,7 @@ Once you have the inputs, perform the following technical steps in order.
 
 ### Step 2: Global Text Replacement
 **Action**: Perform a global case-insensitive search and replace across the entire repository (excluding `.git` and `node_modules`).
-*   **Find**: "AleFlow" (or "Handy")
+*   **Find**: "AleFlow" or "Handy"
 *   **Replace**: [User's App Name]
 
 *Critical check*: Ensure you do not break code logic (e.g., check `DebugPaths.tsx` manually to ensure paths like `%APPDATA%/appname` are valid).
@@ -47,30 +47,31 @@ Once you have the inputs, perform the following technical steps in order.
 1.  Edit **`src/App.css`**:
     *   Locate the `@theme` or `:root` block.
     *   Change `--color-logo-primary` to the **Brand Color** provided by the user.
-    *   Ensure `--color-background-ui` matches if it was meant to be the brand color.
 
 ### Step 4: Icon Generation (Crucial)
 **Action**: Creating the icon requires specific macOS commands. Do not just copy the file.
 1.  **Save** the user's icon image to `src-tauri/icons/icon.png` (overwrite existing).
-2.  **Execute** this shell script to generate the required `.icns` and `.iconset`:
+2.  **Execute** this shell script to generate the required `.icns` and `.iconset`.
+    *Refined to use a generic folder name (`AppIcon.iconset`) to avoid hardcoded branding.*
+
     ```bash
-    # 1. Ensure directory exists
-    mkdir -p src-tauri/icons/AleFlow.iconset
+    # 1. Create a generic iconset folder
+    mkdir -p src-tauri/icons/AppIcon.iconset
 
     # 2. Resize images (using system tools)
-    sips -z 16 16     src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_16x16.png
-    sips -z 32 32     src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_16x16@2x.png
-    sips -z 32 32     src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_32x32.png
-    sips -z 64 64     src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_32x32@2x.png
-    sips -z 128 128   src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_128x128.png
-    sips -z 256 256   src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_128x128@2x.png
-    sips -z 256 256   src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_256x256.png
-    sips -z 512 512   src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_256x256@2x.png
-    sips -z 512 512   src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_512x512.png
-    sips -z 1024 1024 src-tauri/icons/icon.png --out src-tauri/icons/AleFlow.iconset/icon_512x512@2x.png
+    sips -z 16 16     src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_16x16.png
+    sips -z 32 32     src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_16x16@2x.png
+    sips -z 32 32     src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_32x32.png
+    sips -z 64 64     src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_32x32@2x.png
+    sips -z 128 128   src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_128x128.png
+    sips -z 256 256   src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_128x128@2x.png
+    sips -z 256 256   src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_256x256.png
+    sips -z 512 512   src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_256x256@2x.png
+    sips -z 512 512   src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_512x512.png
+    sips -z 1024 1024 src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_512x512@2x.png
 
     # 3. Create ICNS file
-    iconutil -c icns src-tauri/icons/AleFlow.iconset -o src-tauri/icons/icon.icns
+    iconutil -c icns src-tauri/icons/AppIcon.iconset -o src-tauri/icons/icon.icns
     ```
 
 ### Step 5: Clean Documentation
@@ -79,7 +80,7 @@ Once you have the inputs, perform the following technical steps in order.
     *   Title: [App Name]
     *   Description: [User's Description]
     *   **Attribution**: You MUST keep a section "Forked from Handy / AleFlow" to comply with the MIT License.
-2.  **Delete** helper doc files that mention the old brand (e.g., `REBRANDING_GUIDE.md`, `AGENTS.md` if not needed).
+2.  **Delete** helper doc files that mention the old brand (e.g., this file `AGENT_REBRAND_GUIDE.md` and `REBRANDING_GUIDE.md`).
 
 ---
 
