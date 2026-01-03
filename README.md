@@ -4,6 +4,12 @@
 
 **A free, open source, and extensible speech-to-text application that works completely offline.**
 
+<div align="center">
+  <a href="https://github.com/zyahav/AleFlow/releases/latest">
+    <img src="https://img.shields.io/github/v/release/zyahav/AleFlow?style=for-the-badge&label=Download%20Latest%20Version&color=blue" alt="Download Latest Version" />
+  </a>
+</div>
+
 AleFlow is a cross-platform desktop application built with Tauri (Rust + React/TypeScript) that provides simple, privacy-focused speech transcription. Press a shortcut, speak, and have your words appear in any text field—all without sending your voice to the cloud.
 
 > **Note:** AleFlow is a fork of [Handy](https://github.com/cjpais/Handy) by CJ Pais. We gratefully acknowledge the original work.
@@ -121,7 +127,7 @@ AleFlow includes an advanced debug mode for development and troubleshooting. Acc
 
 ## Known Issues & Current Limitations
 
-This project is actively being developed and has some [known issues](https://github.com/cjpais/Handy/issues). We believe in transparency about the current state:
+This project is actively being developed and has some [known issues](https://github.com/zyahav/AleFlow/issues). We believe in transparency about the current state:
 
 ### Major Issues (Help Wanted)
 
