@@ -1,6 +1,6 @@
 # AleFlow
 
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/WVBeWsNXK4)
+
 
 **A free, open source, and extensible speech-to-text application that works completely offline.**
 
@@ -317,32 +317,13 @@ Final structure should look like:
 
 ### How to Contribute
 
-1. **Check existing issues** at [github.com/cjpais/Handy/issues](https://github.com/cjpais/Handy/issues)
-2. **Fork the repository** and create a feature branch
-3. **Test thoroughly** on your target platform
-4. **Submit a pull request** with clear description of changes
-5. **Join the discussion** - reach out at [contact@handy.computer](mailto:contact@handy.computer)
+AleFlow is open source. You can contribute by:
 
-The goal is to create both a useful tool and a foundation for others to build upon—a well-patterned, simple codebase that serves the community.
+1.  **Reporting Issues**: Usage the [Issue Tracker](https://github.com/zyahav/AleFlow/issues) to report bugs.
+2.  **Pull Requests**: Features and fixes are welcome. Please submit PRs to the main branch.
 
-## Sponsors
-
-<div align="center">
-  We're grateful for the support of our sponsors who help make Handy possible:
-  <br><br>
-  <a href="https://wordcab.com">
-    <img src="sponsor-images/wordcab.png" alt="Wordcab" width="120" height="120">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/epicenter-so/epicenter">
-    <img src="sponsor-images/epicenter.png" alt="Epicenter" width="120" height="120">
-  </a>
-</div>
-
-## Related Projects
-
-- **[Handy CLI](https://github.com/cjpais/handy-cli)** - The original Python command-line version
-- **[handy.computer](https://handy.computer)** - Project website with demos and documentation
+**Note on Models:**
+If you are behind a firewall or proxy, you may need to manually download models as described in the "Manual Model Installation" section above.
 
 ## License
 
