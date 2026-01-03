@@ -16,7 +16,7 @@ mod signal_handle;
 mod tray;
 mod tray_i18n;
 mod utils;
-use specta_typescript::{BigIntExportBehavior, Typescript};
+// use specta_typescript::{BigIntExportBehavior, Typescript};
 use tauri_specta::{collect_commands, Builder};
 
 use env_filter::Builder as EnvFilterBuilder;
@@ -111,8 +111,16 @@ fn show_main_window(app: &AppHandle) {
 
 fn initialize_core_logic(app_handle: &AppHandle) {
     // Initialize the input state (Enigo singleton for keyboard/mouse simulation)
-    let enigo_state = input::EnigoState::new().expect("Failed to initialize input state (Enigo)");
-    app_handle.manage(enigo_state);
+    match input::EnigoState::new() {
+        Ok(enigo_state) => {
+            app_handle.manage(enigo_state);
+        }
+        Err(e) => {
+            log::error!("Failed to initialize input state (Enigo): {}", e);
+            // We choose not to panic here to allow the app to start even without accessibility permissions.
+            // Features requiring input simulation will fail or panic later if attempted.
+        }
+    }
 
     // Initialize the managers
     let recording_manager = Arc::new(
@@ -354,7 +362,7 @@ pub fn run() {
         }))
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_process::init())
-        .plugin(tauri_plugin_updater::Builder::new().build())
+        // .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_macos_permissions::init())

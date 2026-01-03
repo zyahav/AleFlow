@@ -42,10 +42,60 @@ The process is entirely local:
 4. Configure your preferred keyboard shortcuts in Settings
 5. Start transcribing!
 
+### macOS Installation and Troubleshooting
+
+**Download & Install:**
+1. Download `AleFlow_0.6.9_aarch64.dmg` from the repository or release page.
+2. Open the DMG file.
+3. Drag the **AleFlow** icon into the **Applications** folder link.
+4. Open your **Applications** folder and double-click **AleFlow**.
+
+**Troubleshooting First Launch:**
+- **"Unidentified Developer" Warning**:
+    1. Click **OK** on the warning.
+    2. Go to **System Settings** > **Privacy & Security**.
+    3. Scroll down to "Security" and look for the message about AleFlow was blocked.
+    4. Click **Open Anyway**.
+    5. Click **Open** on the prompt.
+- **Permissions**:
+    - The app requires **Accessibility** (to type text) and **Microphone** access.
+    - If prompted, click "Open System Settings" and grant permission.
+    - If the app opens but doesn't transcribe, verify these permissions are checked in System Settings.
+
+**Debugging Mode (Terminal):**
+If you experience issues (e.g., app opens but doesn't transcribe), you can run the app from the terminal to see debug logs:
+
+```bash
+# Run the installed application with logs
+/Applications/AleFlow.app/Contents/MacOS/aleflow
+```
+
+Look for error messages when you press the shortcut key.
+
 ### Development Setup
 
 For detailed build instructions including platform-specific requirements, see [BUILD.md](BUILD.md).
+ 
+### Testing
 
+To run the full test suite (currently backend tests):
+
+```bash
+npm run test
+```
+
+To run only backend tests (Rust):
+
+```bash
+npm run test:backend
+```
+
+To verify the frontend build:
+
+```bash
+npm run test:frontend
+```
+ 
 ## Architecture
 
 Handy is built as a Tauri application combining:
