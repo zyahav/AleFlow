@@ -36,7 +36,7 @@ dependencies = [
 
 [[package]]
 name = "aleflow"
-version = "0.6.9"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "chrono",
@@ -48,6 +48,7 @@ dependencies = [
  "futures-util",
  "hound",
  "log",
+ "macos-accessibility-client",
  "natural",
  "once_cell",
  "rdev",
