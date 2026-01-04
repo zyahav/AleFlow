@@ -57,6 +57,7 @@
       "hardenedRuntime": false,
       "minimumSystemVersion": "10.13",
       "entitlements": null,
+      "signingIdentity": "-",
       "dmg": {
         "windowSize": {
           "width": 600,
