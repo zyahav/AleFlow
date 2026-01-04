@@ -38,3 +38,5 @@
 - Local working version confirmed on Mac before starting
 - Tag v0.7.1 exists but points to unpushed commits - will be superseded by v0.7.2
 - Release workflow reads version from tauri.conf.json and auto-creates tag
+- **SECURITY FIX APPLIED:** Removed private.pem and public.pem from Git history (force pushed)
+- **Code signing disabled** in release.yml to allow builds without Apple certificates
