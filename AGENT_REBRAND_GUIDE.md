@@ -70,8 +70,41 @@ Once you have the inputs, perform the following technical steps in order.
     sips -z 512 512   src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_512x512.png
     sips -z 1024 1024 src-tauri/icons/icon.png --out src-tauri/icons/AppIcon.iconset/icon_512x512@2x.png
 
+
     # 3. Create ICNS file
     iconutil -c icns src-tauri/icons/AppIcon.iconset -o src-tauri/icons/icon.icns
+    ```
+
+    **Important Design Note:** Using a raw square image will result in an unprofessional "box" icon. To achieve a native macOS "Squircle" look (rounded rectangle), instruct the Agent to run this Python script on the source image first:
+
+    ```python
+    # save as create_squircle.py
+    from PIL import Image, ImageDraw
+
+    def create_squircle_mask(size, radius):
+        mask = Image.new('L', size, 0)
+        draw = ImageDraw.Draw(mask)
+        draw.rounded_rectangle([(0, 0), size], radius=radius, fill=255)
+        return mask
+
+    try:
+        # Load user icon
+        img = Image.open('src-tauri/icons/icon.png').convert('RGBA')
+        img = img.resize((1024, 1024), Image.Resampling.LANCZOS)
+        
+        # Apple's squircle is approx 22.37% corner radius
+        radius = int(1024 * 0.2237)
+        mask = create_squircle_mask((1024, 1024), radius)
+        
+        # Apply mask
+        output = Image.new('RGBA', (1024, 1024), (0, 0, 0, 0))
+        output.paste(img, (0, 0), mask)
+        
+        # Save overwrite
+        output.save('src-tauri/icons/icon.png')
+        print('Successfully applied macOS squircle mask to icon.png')
+    except Exception as e:
+        print(f'Error: {e}')
     ```
 
 ### Step 5: Clean Documentation
