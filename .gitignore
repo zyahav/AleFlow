@@ -27,3 +27,8 @@ dist-ssr
 /target/
 recording_*
 .crush/
+
+# Private keys - NEVER commit these
+private.pem
+public.pem
+*.pem
