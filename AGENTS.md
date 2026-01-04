@@ -112,3 +112,25 @@ Settings are stored using Tauri's store plugin with reactive updates:
 ### Single Instance Architecture
 
 The app enforces single instance behavior - launching when already running brings the settings window to front rather than creating a new process.
+
+## Professional Release Workflow
+
+**IMPORTANT:** Official releases should **ALWAYS** be built via GitHub Actions, not locally. This ensures a clean environment, proper signing, and consistent artifacts.
+
+### How to Release a New Version
+
+1.  **Bump Version**:
+    -   Update `version` in `package.json`
+    -   Update `version` in `src-tauri/Cargo.toml`
+    -   Update `version` in `src-tauri/tauri.conf.json`
+2.  **Commit & Push**:
+    -   Commit these changes: `git commit -am "chore: bump version to X.Y.Z"`
+    -   Push to main: `git push origin main`
+3.  **Trigger Build**:
+    -   Go to **GitHub Repository** -> **Actions** tab.
+    -   Select **"Release"** workflow on the left.
+    -   Click **"Run workflow"** -> Select branch (e.g., `main` or your feature branch) -> **Run workflow**.
+4.  **Result**:
+    -   GitHub will build the release artifacts (DMG for macOS, etc.).
+    -   It will create a "Draft Release" in the **Releases** section with the artifacts attached.
+    -   Review the draft and publish it.
