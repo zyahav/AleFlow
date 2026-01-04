@@ -5,38 +5,62 @@
 
 ---
 
-## Pre-Release Tasks
+## Pre-Release Tasks (COMPLETED)
 
 - [x] 1. Update version to 0.7.2 in `package.json`
 - [x] 2. Update version to 0.7.2 in `src-tauri/Cargo.toml`
 - [x] 3. Update version to 0.7.2 in `src-tauri/tauri.conf.json`
-- [x] 4. Update `Cargo.lock` by running `cargo check` (auto-updates lock file)
+- [x] 4. Update `Cargo.lock` by running `cargo check`
 - [x] 5. Commit version bump changes
+- [x] 6. Push all commits to origin/main
 
 ---
 
-## Push & Release Tasks
+## Security Fixes (COMPLETED)
 
-- [x] 6. Push all commits to origin/main (includes 5 unpushed + version bump)
-- [ ] 7. Trigger GitHub Actions release workflow (workflow_dispatch)
-- [ ] 8. Verify CI workflow runs successfully (green checkmark)
-- [ ] 9. Verify release artifacts created (DMG, MSI, AppImage, etc.)
-
----
-
-## Post-Release Verification
-
-- [ ] 10. Download DMG from GitHub Releases
-- [ ] 11. Test installation on Mac (drag to /Applications)
-- [ ] 12. Verify app launches and works correctly
-- [ ] 13. Delete this task file (optional cleanup)
+- [x] Removed private.pem and public.pem from Git history
+- [x] Added *.pem to .gitignore
+- [x] Disabled code signing in release.yml (sign-binaries: false)
+- [x] Removed signingIdentity from tauri.conf.json
 
 ---
 
-## Notes
+## Platform Builds - ONE BY ONE
 
-- Local working version confirmed on Mac before starting
-- Tag v0.7.1 exists but points to unpushed commits - will be superseded by v0.7.2
-- Release workflow reads version from tauri.conf.json and auto-creates tag
-- **SECURITY FIX APPLIED:** Removed private.pem and public.pem from Git history (force pushed)
-- **Code signing disabled** in release.yml to allow builds without Apple certificates
+### macOS Apple Silicon (aarch64) - TESTING NOW
+- [ ] Build succeeds in CI
+- [ ] DMG uploaded to release
+- [ ] Download and test on Mac
+
+### macOS Intel (x86_64)
+- [ ] Build succeeds in CI
+- [ ] DMG uploaded to release
+- [ ] (Optional) Test on Intel Mac
+
+### Windows x64 - ALREADY WORKING ✅
+- [x] Build succeeded in CI
+- [x] EXE and MSI uploaded to release
+
+### Windows ARM64 - ALREADY WORKING ✅
+- [x] Build succeeded in CI
+- [x] EXE and MSI uploaded to release
+
+### Linux (Ubuntu/Debian) - ALREADY WORKING ✅
+- [x] Build succeeded in CI
+- [x] DEB, AppImage, RPM uploaded to release
+
+---
+
+## Final Steps
+
+- [ ] All platforms building successfully
+- [ ] Publish the release (make it public)
+- [ ] Verify download links work
+- [ ] Delete this task file
+
+---
+
+## Current Status
+
+Windows and Linux builds are DONE and sitting in a draft release.
+macOS is the only blocker - testing fix now.
