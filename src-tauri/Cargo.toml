@@ -1,6 +1,6 @@
 [package]
 name = "aleflow"
-version = "0.7.0"
+version = "0.7.2"
 description = "AleFlow"
 authors = ["cjpais"]
 edition = "2021"
