@@ -117,20 +117,26 @@ The app enforces single instance behavior - launching when already running bring
 
 **IMPORTANT:** Official releases should **ALWAYS** be built via GitHub Actions, not locally. This ensures a clean environment, proper signing, and consistent artifacts.
 
+### Manual Release Process
+
+The release workflow is **NOT** triggered automatically on push. The `.github/workflows/release.yml` file is configured with `on: workflow_dispatch`, which means it must be manually triggered. This prevents accidental builds for every commit and gives you control over when a release happens.
+
 ### How to Release a New Version
 
 1.  **Bump Version**:
-    -   Update `version` in `package.json`
-    -   Update `version` in `src-tauri/Cargo.toml`
-    -   Update `version` in `src-tauri/tauri.conf.json`
+    - Update `version` in `package.json`
+    - Update `version` in `src-tauri/Cargo.toml`
+    - Update `version` in `src-tauri/tauri.conf.json`
 2.  **Commit & Push**:
-    -   Commit these changes: `git commit -am "chore: bump version to X.Y.Z"`
-    -   Push to main: `git push origin main`
-3.  **Trigger Build**:
-    -   Go to **GitHub Repository** -> **Actions** tab.
-    -   Select **"Release"** workflow on the left.
-    -   Click **"Run workflow"** -> Select branch (e.g., `main` or your feature branch) -> **Run workflow**.
+    - Commit these changes: `git commit -am "chore: bump version to X.Y.Z"`
+    - Push to main: `git push origin main`
+3.  **Trigger Build (Manually)**:
+    - Go to the **"Actions"** tab in your GitHub repository.
+    - Select the **"Release"** workflow from the sidebar on the left.
+    - Click the **"Run workflow"** button.
+    - Select the branch (usually `main`) and click the green **Run workflow** button.
 4.  **Result**:
-    -   GitHub will build the release artifacts (DMG for macOS, etc.).
-    -   It will create a "Draft Release" in the **Releases** section with the artifacts attached.
-    -   Review the draft and publish it.
+    - GitHub will spawn parallel runners for Windows (x64/ARM), macOS (Intel/Apple Silicon), and Linux.
+    - It will build all executables and sign them.
+    - It will create a **Draft Release** in the **Releases** section with all artifacts attached.
+    - Review the draft and publish it.

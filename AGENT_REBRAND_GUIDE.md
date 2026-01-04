@@ -6,53 +6,63 @@ This document is a "Master Protocol" for white-labeling this application. If a u
 ---
 
 ## 🛑 Phase 1: Information Gathering
+
 **DO NOT START CODING YET.** First, ask the user the following questions to gather the necessary "Rebranding Configuration". Wait for their specific answers.
 
 **Ask the user:**
+
 1.  **App Name**: "What is the new name of the application? (e.g., MyRecorder)"
 2.  **App ID**: "What is the unique bundle identifier? (e.g., com.mycompany.rec)"
 3.  **Description**: "What is the short description for the app?"
 4.  **Brand Color**: "What is your primary brand color? (Provide a Hex Code, e.g., #FF5733)"
 5.  **Icon Image**: "Please upload or provide the path to a **1024x1024 PNG** image to be used as the app icon."
-    *   *Note to Agent: Verify the user provides a valid image path or file.*
+    - _Note to Agent: Verify the user provides a valid image path or file._
 
 ---
 
 ## 🛠️ Phase 2: Execution (Agent Actions)
+
 Once you have the inputs, perform the following technical steps in order.
 
 ### Step 1: Naming & Identifiers
+
 **Action**: Modify the following files with the **App Name** and **App ID** provided by the user.
 
 1.  **`package.json`**:
-    *   Set `"name"` to a kebab-case version of App Name (e.g., `my-recorder`).
-    *   Set `"productName"` to the App Name.
+    - Set `"name"` to a kebab-case version of App Name (e.g., `my-recorder`).
+    - Set `"productName"` to the App Name.
 2.  **`src-tauri/tauri.conf.json`**:
-    *   Set `"productName"` to the App Name.
-    *   Set `"identifier"` to the App ID.
-    *   Update `bundle.macOS.dmg.title` (if present) to the App Name.
+    - Set `"productName"` to the App Name.
+    - Set `"identifier"` to the App ID.
+    - Update `bundle.macOS.dmg.title` (if present) to the App Name.
 3.  **`src-tauri/Cargo.toml`**:
-    *   Set `package.name` to a snake_case version of App Name.
-    *   Set `default-run` to the same snake_case name.
+    - Set `package.name` to a snake_case version of App Name.
+    - Set `default-run` to the same snake_case name.
 
 ### Step 2: Global Text Replacement
-**Action**: Perform a global case-insensitive search and replace across the entire repository (excluding `.git` and `node_modules`).
-*   **Find**: "AleFlow" or "Handy"
-*   **Replace**: [User's App Name]
 
-*Critical check*: Ensure you do not break code logic (e.g., check `DebugPaths.tsx` manually to ensure paths like `%APPDATA%/appname` are valid).
+**Action**: Perform a global case-insensitive search and replace across the entire repository (excluding `.git` and `node_modules`).
+
+- **Find**: "AleFlow" or "Handy"
+- **Replace**: [User's App Name]
+
+_Critical check_: Ensure you do not break code logic (e.g., check `DebugPaths.tsx` manually to ensure paths like `%APPDATA%/appname` are valid).
 
 ### Step 3: Brand Styling
+
 **Action**: Update the application's color scheme.
+
 1.  Edit **`src/App.css`**:
-    *   Locate the `@theme` or `:root` block.
-    *   Change `--color-logo-primary` to the **Brand Color** provided by the user.
+    - Locate the `@theme` or `:root` block.
+    - Change `--color-logo-primary` to the **Brand Color** provided by the user.
 
 ### Step 4: Icon Generation (Crucial)
+
 **Action**: Creating the icon requires specific macOS commands. Do not just copy the file.
+
 1.  **Save** the user's icon image to `src-tauri/icons/icon.png` (overwrite existing).
 2.  **Execute** this shell script to generate the required `.icns` and `.iconset`.
-    *Refined to use a generic folder name (`AppIcon.iconset`) to avoid hardcoded branding.*
+    _Refined to use a generic folder name (`AppIcon.iconset`) to avoid hardcoded branding._
 
     ```bash
     # 1. Create a generic iconset folder
@@ -91,15 +101,15 @@ Once you have the inputs, perform the following technical steps in order.
         # Load user icon
         img = Image.open('src-tauri/icons/icon.png').convert('RGBA')
         img = img.resize((1024, 1024), Image.Resampling.LANCZOS)
-        
+
         # Apple's squircle is approx 22.37% corner radius
         radius = int(1024 * 0.2237)
         mask = create_squircle_mask((1024, 1024), radius)
-        
+
         # Apply mask
         output = Image.new('RGBA', (1024, 1024), (0, 0, 0, 0))
         output.paste(img, (0, 0), mask)
-        
+
         # Save overwrite
         output.save('src-tauri/icons/icon.png')
         print('Successfully applied macOS squircle mask to icon.png')
@@ -108,22 +118,26 @@ Once you have the inputs, perform the following technical steps in order.
     ```
 
 ### Step 5: Clean Documentation
+
 **Action**:
+
 1.  **Rewrite `README.md`**:
-    *   Title: [App Name]
-    *   Description: [User's Description]
-    *   **Attribution**: You MUST keep a section "Forked from Handy / AleFlow" to comply with the MIT License.
+    - Title: [App Name]
+    - Description: [User's Description]
+    - **Attribution**: You MUST keep a section "Forked from Handy / AleFlow" to comply with the MIT License.
 2.  **Delete** helper doc files that mention the old brand (e.g., this file `AGENT_REBRAND_GUIDE.md` and `REBRANDING_GUIDE.md`).
 
 ---
 
 ## 🚀 Phase 3: Build & Delivery
+
 **Action**:
+
 1.  Run `bun run tauri build`.
 2.  Locate the output in `src-tauri/target/release/bundle/dmg/`.
 3.  **Verify**:
-    *   Open the DMG.
-    *   Check that the Icon is the user's custom icon.
-    *   Check that the Application Name is correct.
+    - Open the DMG.
+    - Check that the Icon is the user's custom icon.
+    - Check that the Application Name is correct.
 
 **Final Handoff**: Tell the user the white-label app is ready and provide the path to the installer.

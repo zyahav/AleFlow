@@ -1,7 +1,5 @@
 # AleFlow
 
-
-
 **A free, open source, and extensible speech-to-text application that works completely offline.**
 
 <div align="center">
@@ -53,22 +51,24 @@ The process is entirely local:
 ### macOS Installation and Troubleshooting
 
 **Download & Install:**
+
 1. Download `AleFlow_0.6.9_aarch64.dmg` from the repository or release page.
 2. Open the DMG file.
 3. Drag the **AleFlow** icon into the **Applications** folder link.
 4. Open your **Applications** folder and double-click **AleFlow**.
 
 **Troubleshooting First Launch:**
+
 - **"Unidentified Developer" Warning**:
-    1. Click **OK** on the warning.
-    2. Go to **System Settings** > **Privacy & Security**.
-    3. Scroll down to "Security" and look for the message about AleFlow was blocked.
-    4. Click **Open Anyway**.
-    5. Click **Open** on the prompt.
+  1. Click **OK** on the warning.
+  2. Go to **System Settings** > **Privacy & Security**.
+  3. Scroll down to "Security" and look for the message about AleFlow was blocked.
+  4. Click **Open Anyway**.
+  5. Click **Open** on the prompt.
 - **Permissions**:
-    - The app requires **Accessibility** (to type text) and **Microphone** access.
-    - If prompted, click "Open System Settings" and grant permission.
-    - If the app opens but doesn't transcribe, verify these permissions are checked in System Settings.
+  - The app requires **Accessibility** (to type text) and **Microphone** access.
+  - If prompted, click "Open System Settings" and grant permission.
+  - If the app opens but doesn't transcribe, verify these permissions are checked in System Settings.
 
 **Debugging Mode (Terminal):**
 If you experience issues (e.g., app opens but doesn't transcribe), you can run the app from the terminal to see debug logs:
@@ -83,7 +83,15 @@ Look for error messages when you press the shortcut key.
 ### Development Setup
 
 For detailed build instructions including platform-specific requirements, see [BUILD.md](BUILD.md).
- 
+
+#### Build Artifacts
+After running a build (e.g. `npm run tauri build`), artifacts are generated in `src-tauri/target/release/bundle/`.
+
+Common locations:
+- **macOS DMG**: `src-tauri/target/release/bundle/dmg/AleFlow_x.x.x_aarch64.dmg`
+- **macOS App**: `src-tauri/target/release/bundle/macos/AleFlow.app`
+- **Debug Builds**: `src-tauri/target/debug/bundle/...`
+
 ### Testing
 
 To run the full test suite (currently backend tests):
@@ -103,7 +111,7 @@ To verify the frontend build:
 ```bash
 npm run test:frontend
 ```
- 
+
 ## Architecture
 
 AleFlow is built as a Tauri application combining:
