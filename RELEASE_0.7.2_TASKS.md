@@ -17,7 +17,7 @@
 
 ## Push & Release Tasks
 
-- [ ] 6. Push all commits to origin/main (includes 5 unpushed + version bump)
+- [x] 6. Push all commits to origin/main (includes 5 unpushed + version bump)
 - [ ] 7. Trigger GitHub Actions release workflow (workflow_dispatch)
 - [ ] 8. Verify CI workflow runs successfully (green checkmark)
 - [ ] 9. Verify release artifacts created (DMG, MSI, AppImage, etc.)
