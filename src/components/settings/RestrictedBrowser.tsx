@@ -191,32 +191,26 @@ export const RestrictedBrowser: React.FC = () => {
 
     return (
         <div className="flex flex-col w-full h-full bg-[#0a0a0a] border-l border-white/5 overflow-hidden relative">
-            {/* Header - Hidden in playback mode for actual full screen */}
-            {!selectedVideo && (
-                <div className="flex items-center justify-between p-4 bg-[#111] border-b border-white/5">
-                    <div className="flex items-center gap-2 text-logo-primary">
-                        <Lock size={18} />
-                        <h2 className="text-sm font-black tracking-widest uppercase">Kids Corner</h2>
-                    </div>
+            {/* Navigation Header - Shown in both grid and playback for safety */}
+            <div className={`p-4 bg-[#111] border-b border-white/5 flex items-center justify-between ${selectedVideo ? 'h-16' : ''}`}>
+                <div className="flex items-center gap-2 text-logo-primary">
+                    <Lock size={18} />
+                    <h2 className="text-sm font-black tracking-widest uppercase">Kids Corner</h2>
                 </div>
-            )}
-
-            {/* Floating Back Button - Only in playback mode */}
-            {selectedVideo && (
-                <div className="absolute top-6 right-6 z-50">
+                {selectedVideo && (
                     <Button
                         variant="ghost"
                         size="sm"
                         onClick={handleBack}
-                        className="bg-black/40 backdrop-blur-xl border border-white/10 text-white/60 hover:text-white hover:bg-black/60 shadow-2xl rounded-full px-4 h-10 flex items-center gap-2 transition-all active:scale-95"
+                        className="bg-logo-primary/10 border border-logo-primary/20 text-logo-primary hover:bg-logo-primary hover:text-white shadow-2xl rounded-full px-4 h-9 flex items-center gap-2 transition-all active:scale-95"
                     >
                         <ChevronLeft size={16} />
                         <span className="text-[10px] font-black uppercase tracking-widest">Back to Videos</span>
                     </Button>
-                </div>
-            )}
+                )}
+            </div>
 
-            <div className={`flex-1 overflow-y-auto ${selectedVideo ? 'p-0' : 'p-6'} scrollbar-hide`}>
+            <div className={`flex-1 overflow-y-auto ${selectedVideo ? 'p-0' : 'p-6'} scrollbar-hide flex flex-col`}>
                 {!selectedVideo ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {ALLOWED_VIDEOS.map((video) => (
@@ -247,7 +241,7 @@ export const RestrictedBrowser: React.FC = () => {
                         ))}
                     </div>
                 ) : (
-                    <div ref={contentRef} className="w-full h-full bg-black">
+                    <div ref={contentRef} className="flex-1 w-full bg-black">
                         {/* Native Webview placeholder - fills entire area in playback mode */}
                         <div className="w-full h-full flex items-center justify-center text-white/5 pointer-events-none">
                             <Globe size={120} className="animate-pulse" />

@@ -85,17 +85,22 @@ export const SECTIONS_CONFIG = {
 interface SidebarProps {
   activeSection: SidebarSection;
   onSectionChange: (section: SidebarSection) => void;
+  filterIds?: string[];
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
   activeSection,
   onSectionChange,
+  filterIds,
 }) => {
   const { t } = useTranslation();
   const { settings } = useSettings();
 
   const availableSections = Object.entries(SECTIONS_CONFIG)
-    .filter(([_, config]) => config.enabled(settings))
+    .filter(([id, config]) => {
+      if (filterIds?.includes(id)) return false;
+      return config.enabled(settings);
+    })
     .map(([id, config]) => ({ id: id as SidebarSection, ...config }));
 
   return (
