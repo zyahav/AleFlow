@@ -28,7 +28,7 @@ pub fn get_cursor_position(app_handle: &AppHandle) -> Option<(i32, i32)> {
 pub fn send_paste_ctrl_v(enigo: &mut Enigo) -> Result<(), String> {
     // Platform-specific key definitions
     #[cfg(target_os = "macos")]
-    let (modifier_key, v_key_code) = (Key::Meta, Key::Raw(9));
+    let (modifier_key, v_key_code) = (Key::Meta, Key::Other(9));
     #[cfg(target_os = "windows")]
     let (modifier_key, v_key_code) = (Key::Control, Key::Other(0x56)); // VK_V
     #[cfg(target_os = "linux")]
@@ -57,7 +57,7 @@ pub fn send_paste_ctrl_v(enigo: &mut Enigo) -> Result<(), String> {
 pub fn send_paste_ctrl_shift_v(enigo: &mut Enigo) -> Result<(), String> {
     // Platform-specific key definitions
     #[cfg(target_os = "macos")]
-    let (modifier_key, v_key_code) = (Key::Meta, Key::Raw(9)); // Cmd+Shift+V on macOS
+    let (modifier_key, v_key_code) = (Key::Meta, Key::Other(9)); // Cmd+Shift+V on macOS
     #[cfg(target_os = "windows")]
     let (modifier_key, v_key_code) = (Key::Control, Key::Other(0x56)); // VK_V
     #[cfg(target_os = "linux")]

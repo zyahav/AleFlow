@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Cog, FlaskConical, History, Info, Sparkles } from "lucide-react";
+import { Cog, FlaskConical, History, Info, Sparkles, Globe } from "lucide-react";
 import AleFlowMark from "./icons/AleFlowMark";
 import { useSettings } from "../hooks/useSettings";
 import {
@@ -11,6 +11,7 @@ import {
   AboutSettings,
   PostProcessingSettings,
 } from "./settings";
+import { Browser } from "./settings/Browser";
 
 export type SidebarSection = keyof typeof SECTIONS_CONFIG;
 
@@ -30,6 +31,12 @@ interface SectionConfig {
 }
 
 export const SECTIONS_CONFIG = {
+  browser: {
+    labelKey: "sidebar.browser",
+    icon: Globe,
+    component: Browser,
+    enabled: () => true,
+  },
   general: {
     labelKey: "sidebar.general",
     icon: AleFlowMark,
@@ -94,20 +101,26 @@ export const Sidebar: React.FC<SidebarProps> = ({
           return (
             <div
               key={section.id}
-              className={`flex gap-2 items-center p-2 w-full rounded-lg cursor-pointer transition-colors ${
-                isActive
-                  ? "bg-logo-primary/80"
-                  : "hover:bg-mid-gray/20 hover:opacity-100 opacity-85"
-              }`}
+              className={`flex gap-2 items-center p-2 w-full rounded-lg cursor-pointer transition-colors ${isActive
+                ? "bg-logo-primary/80"
+                : "hover:bg-mid-gray/20 hover:opacity-100 opacity-85"
+                }`}
               onClick={() => onSectionChange(section.id)}
             >
               <Icon width={24} height={24} className="shrink-0" />
-              <p
-                className="text-sm font-medium truncate"
-                title={t(section.labelKey)}
-              >
-                {t(section.labelKey)}
-              </p>
+              <div className="flex flex-col flex-1 truncate">
+                <p
+                  className="text-sm font-medium truncate"
+                  title={t(section.labelKey)}
+                >
+                  {t(section.labelKey)}
+                </p>
+                {section.id === "browser" && (
+                  <span className="text-[10px] opacity-70 font-bold bg-white/20 px-1 rounded self-start">
+                    v0.7.1
+                  </span>
+                )}
+              </div>
             </div>
           );
         })}

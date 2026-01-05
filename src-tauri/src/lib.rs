@@ -317,6 +317,11 @@ pub fn run() {
         commands::history::update_history_limit,
         commands::history::update_recording_retention_period,
         helpers::clamshell::is_laptop,
+        commands::browser::create_browser_webview,
+        commands::browser::update_browser_webview_bounds,
+        commands::browser::hide_browser_webview,
+        commands::browser::show_browser_webview,
+        commands::browser::destroy_browser_webview,
     ]);
 
     #[cfg(debug_assertions)] // <- Only export on non-release builds
