@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Cog, FlaskConical, History, Info, Sparkles, Globe } from "lucide-react";
+import { Cog, FlaskConical, History, Info, Sparkles, Globe, Baby } from "lucide-react";
 import AleFlowMark from "./icons/AleFlowMark";
 import { useSettings } from "../hooks/useSettings";
 import {
@@ -12,6 +12,7 @@ import {
   PostProcessingSettings,
 } from "./settings";
 import { Browser } from "./settings/Browser";
+import { RestrictedBrowser } from "./settings/RestrictedBrowser";
 
 export type SidebarSection = keyof typeof SECTIONS_CONFIG;
 
@@ -35,6 +36,12 @@ export const SECTIONS_CONFIG = {
     labelKey: "sidebar.browser",
     icon: Globe,
     component: Browser,
+    enabled: () => true,
+  },
+  kids: {
+    labelKey: "sidebar.kids",
+    icon: Baby,
+    component: RestrictedBrowser,
     enabled: () => true,
   },
   general: {
@@ -117,7 +124,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </p>
                 {section.id === "browser" && (
                   <span className="text-[10px] opacity-70 font-bold bg-white/20 px-1 rounded self-start">
-                    v0.7.1
+                    v0.7.2
                   </span>
                 )}
               </div>

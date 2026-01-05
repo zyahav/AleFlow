@@ -71,19 +71,24 @@ export const Browser: React.FC = () => {
                 if (!webviewCreated.current) {
                     await invoke("create_browser_webview", {
                         url: activeTab.url,
-                        x, y, width, height
+                        id: "browser_content",
+                        x, y, width, height,
+                        restricted: false
                     });
                     webviewCreated.current = true;
                 } else {
                     // Update bounds
                     await invoke("update_browser_webview_bounds", {
+                        id: "browser_content",
                         x, y, width, height
                     });
                     // If we have a forceUrl (navigation), handle it
                     if (forceUrl) {
                         await invoke("create_browser_webview", {
                             url: forceUrl,
-                            x, y, width, height
+                            id: "browser_content",
+                            x, y, width, height,
+                            restricted: false
                         });
                     }
                 }
@@ -107,15 +112,15 @@ export const Browser: React.FC = () => {
         return () => {
             resizeObserver.disconnect();
             clearInterval(interval);
-            invoke("hide_browser_webview").catch(console.error);
+            invoke("hide_browser_webview", { id: "browser_content" }).catch(console.error);
         };
     }, [activeTabId, activeTab.url]);
 
     // Handle initial show and component unmount
     useEffect(() => {
-        invoke("show_browser_webview").catch(console.error);
+        invoke("show_browser_webview", { id: "browser_content" }).catch(console.error);
         return () => {
-            invoke("hide_browser_webview").catch(console.error);
+            invoke("hide_browser_webview", { id: "browser_content" }).catch(console.error);
         };
     }, []);
 
@@ -221,7 +226,7 @@ export const Browser: React.FC = () => {
             {/* Toolbar */}
             <div className="flex items-center gap-3 p-3 bg-[#111] border-b border-white/5 group/toolbar">
                 <div className="flex items-center gap-1">
-                    <span className="text-[9px] bg-logo-primary/20 text-logo-primary font-black px-1.5 py-0.5 rounded border border-logo-primary/20 group-hover/toolbar:bg-logo-primary group-hover/toolbar:text-white transition-colors duration-300">v0.7.1</span>
+                    <span className="text-[9px] bg-logo-primary/20 text-logo-primary font-black px-1.5 py-0.5 rounded border border-logo-primary/20 group-hover/toolbar:bg-logo-primary group-hover/toolbar:text-white transition-colors duration-300">v0.7.2</span>
                     <Button
                         variant="ghost"
                         size="sm"

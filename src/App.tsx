@@ -80,12 +80,17 @@ function App() {
       <div className="flex-1 flex overflow-hidden">
         <Sidebar
           activeSection={currentSection}
-          onSectionChange={setCurrentSection}
+          onSectionChange={(section) => {
+            setCurrentSection(section);
+            // Proactive cleanup of native webviews when switching
+            invoke("hide_browser_webview", { id: "browser_content" }).catch(() => { });
+            invoke("hide_browser_webview", { id: "kids_content" }).catch(() => { });
+          }}
         />
         {/* Scrollable content area */}
         <div className="flex-1 flex flex-col overflow-hidden">
           <div className="flex-1 overflow-hidden">
-            <div className={`h-full w-full flex flex-col ${currentSection === "browser" ? "" : "items-center p-4 gap-4 overflow-y-auto"}`}>
+            <div className={`h-full w-full flex flex-col ${(currentSection === "browser" || currentSection === "kids") ? "" : "items-center p-4 gap-4 overflow-y-auto"}`}>
               {currentSection !== "browser" && <AccessibilityPermissions />}
               {renderSettingsContent(currentSection)}
             </div>
