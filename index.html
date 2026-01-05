@@ -1,13 +1,74 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AleFlow</title>
-  </head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AleFlow</title>
+  <style>
+    body {
+      background: #050505;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: monospace;
+    }
+
+    #boot-status {
+      padding: 40px;
+    }
+
+    .log-line {
+      margin: 5px 0;
+      font-size: 12px;
+    }
+
+    .log-ok {
+      color: #0f0;
+    }
+
+    .log-err {
+      color: #f00;
+    }
+
+    .log-info {
+      color: #0ff;
+    }
+  </style>
+  <script>
+    window.setLog = function (msg, type = 'info') {
+      const logger = document.getElementById('boot-status');
+      if (logger) {
+        const div = document.createElement('div');
+        div.className = 'log-line log-' + type;
+        div.innerText = "[" + new Date().toLocaleTimeString() + "] " + msg;
+        logger.appendChild(div);
+      }
+      console.log("BOOT: " + msg);
+    };
+
+    window.onerror = function (msg, url, line) {
+      window.setLog("GLOBAL ERR: " + msg + " (at " + url + ":" + line + ")", "err");
+    };
+  </script>
+</head>
+
+<body>
+  <div id="root">
+    <div id="boot-status">
+      <h1 style="color: yellow;">ALEFLOW KERNEL v0.8.0-REV8</h1>
+      <div class="log-line log-info">System: Audit Mode Initialized...</div>
+    </div>
+  </div>
+
+  <!-- Cache busted version param -->
+  <script type="module" src="/src/main.tsx?rev=8"></script>
+
+  <div id="diagnostic-link"
+    style="position:fixed; bottom:10px; right:10px; color:white; font-size:8px; font-family:monospace; z-index:999999; pointer-events:none; opacity: 0.1;">
+    0.8.0-SPATIAL-v8
+  </div>
+</body>
+
 </html>

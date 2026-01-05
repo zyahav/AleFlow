@@ -19,6 +19,8 @@
     "test:frontend": "tsc && vite build --emptyOutDir"
   },
   "dependencies": {
+    "@react-three/drei": "^9.115.0",
+    "@react-three/fiber": "^8.17.10",
     "@tailwindcss/vite": "^4.1.16",
     "@tauri-apps/api": "^2.9.0",
     "@tauri-apps/plugin-autostart": "~2.5.1",
@@ -31,6 +33,7 @@
     "@tauri-apps/plugin-sql": "~2.3.1",
     "@tauri-apps/plugin-store": "~2.4.1",
     "@tauri-apps/plugin-updater": "~2.9.0",
+    "@types/three": "^0.169.0",
     "framer-motion": "^12.24.0",
     "i18next": "^25.7.2",
     "lucide-react": "^0.542.0",
@@ -41,6 +44,7 @@
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.16",
     "tauri-plugin-macos-permissions-api": "2.3.0",
+    "three": "^0.169.0",
     "zod": "^3.25.76",
     "zustand": "^5.0.8"
   },

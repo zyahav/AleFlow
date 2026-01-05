@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-text: #0f0f0f;
-  --color-background: #fbfbfb;
+  --color-text: #f6f6f6;
+  --color-background: #050505;
   --color-background-ui: #c1121f;
   --color-logo-primary: #c1121f;
   --color-logo-stroke: #382731;
@@ -16,12 +16,9 @@
   line-height: 24px;
   font-weight: 400;
 
-  /* Colors - Light Theme */
-  /* --color-text: #0f0f0f;
-  --color-background: #fbfbfb;
-  --color-logo-primary: #C1121F;
-  --color-logo-stroke: #382731;
-  --color-text-stroke: #f6f6f6; */
+  /* Colors - Dark Theme */
+  --color-text: #f6f6f6;
+  --color-background: #050505;
 
   /* Typography settings */
   font-synthesis: none;
