@@ -27,7 +27,7 @@ interface IconProps {
 interface SectionConfig {
   labelKey: string;
   icon: React.ComponentType<IconProps>;
-  component: React.ComponentType;
+  component: React.ComponentType<any>;
   enabled: (settings: any) => boolean;
 }
 

@@ -11,9 +11,9 @@ import { commands } from "@/bindings";
 import { invoke } from "@tauri-apps/api/core";
 import { SpatialWorld } from "./components/spatial/SpatialWorld";
 import { AppIcon3D } from "./components/spatial/AppIcon3D";
-import { Globe, Baby, Mail, Compass, Sparkles, Mic } from "lucide-react";
+import { Globe, Baby, Mail, Compass, Sparkles, Mic, Gamepad2, GraduationCap, BookOpen } from "lucide-react";
 
-const renderSettingsContent = (section: SidebarSection, setCurrentSection: (s: SidebarSection | null) => void, onClose: () => void) => {
+const renderSettingsContent = (section: SidebarSection, setCurrentSection: (s: SidebarSection | null) => void, onClose: () => void, browserUrl: string | null) => {
   const isCoreApp = section !== "browser" && section !== "kids";
   const ActiveComponent = SECTIONS_CONFIG[section]?.component || SECTIONS_CONFIG.general.component;
 
@@ -38,7 +38,7 @@ const renderSettingsContent = (section: SidebarSection, setCurrentSection: (s: S
           </button>
         </div>
         <div className="flex-1 overflow-hidden">
-          <ActiveComponent />
+          <ActiveComponent initialUrl={browserUrl} />
         </div>
       </div>
     </div>
@@ -48,6 +48,7 @@ const renderSettingsContent = (section: SidebarSection, setCurrentSection: (s: S
 function App() {
   const [showOnboarding, setShowOnboarding] = useState<boolean | null>(null);
   const [currentSection, setCurrentSection] = useState<SidebarSection | null>(null);
+  const [browserUrl, setBrowserUrl] = useState<string | null>(null);
   const { settings } = useSettings();
 
   useEffect(() => {
@@ -103,14 +104,14 @@ function App() {
               position={[0, 0, 3]}
               onClick={() => setCurrentSection("general")}
             />
-            
-            {/* Arranged in a diamond on XY plane, standing at Z=3 */}
+
+            {/* Inner ring - Core apps */}
             <AppIcon3D
               id="browser"
               icon={Globe}
               label="Browser"
               color="#3b82f6"
-              position={[-10, 10, 3]}
+              position={[-8, 6, 3]}
               onClick={() => setCurrentSection("browser")}
             />
             <AppIcon3D
@@ -118,7 +119,7 @@ function App() {
               icon={Baby}
               label="Kids Corner"
               color="#f43f5e"
-              position={[10, 10, 3]}
+              position={[8, 6, 3]}
               onClick={() => setCurrentSection("kids")}
             />
             <AppIcon3D
@@ -126,7 +127,7 @@ function App() {
               icon={Mail}
               label="Mail"
               color="#22c55e"
-              position={[-10, -10, 3]}
+              position={[-8, -6, 3]}
               onClick={() => setCurrentSection("browser")}
             />
             <AppIcon3D
@@ -134,8 +135,43 @@ function App() {
               icon={Sparkles}
               label="Multiverse"
               color="#a855f7"
-              position={[10, -10, 3]}
+              position={[8, -6, 3]}
               onClick={() => setCurrentSection("general")}
+            />
+
+            {/* Outer ring - Educational apps */}
+            <AppIcon3D
+              id="memory-game"
+              icon={Gamepad2}
+              label="Memory Game"
+              color="#f59e0b"
+              position={[0, 16, 3]}
+              onClick={() => {
+                setBrowserUrl("https://hebrew-memory-game.vercel.app/");
+                setCurrentSection("browser");
+              }}
+            />
+            <AppIcon3D
+              id="syllabus"
+              icon={GraduationCap}
+              label="Syllabus"
+              color="#06b6d4"
+              position={[-14, 10, 3]}
+              onClick={() => {
+                setBrowserUrl("https://drive.google.com/drive/u/0/folders/1nZQm3xJolvdWxPZ3XAW3dijZXkM0_SNS");
+                setCurrentSection("browser");
+              }}
+            />
+            <AppIcon3D
+              id="michal-stories"
+              icon={BookOpen}
+              label="Michal Stories"
+              color="#ec4899"
+              position={[14, 10, 3]}
+              onClick={() => {
+                setBrowserUrl("https://www.canva.com/design/DAGqehQYj7w/1RFMAz4crzVrikNlsgdTVQ/view");
+                setCurrentSection("browser");
+              }}
             />
           </SpatialWorld>
 
@@ -157,7 +193,8 @@ function App() {
         invoke("hide_browser_webview", { id: "browser_content" }).catch(() => { });
         invoke("hide_browser_webview", { id: "kids_content" }).catch(() => { });
         setCurrentSection(null);
-      })}
+        setBrowserUrl(null); // Clear URL on close
+      }, browserUrl)}
 
       <div className="fixed bottom-0 left-0 right-0 p-4 flex justify-between items-center pointer-events-none">
         <div className="text-[9px] font-bold text-white/10 uppercase tracking-widest">Spatial 3D Environment</div>

@@ -29,7 +29,7 @@ const HOME_URL = "https://en.m.wikipedia.org";
 
 const STORAGE_KEY = "aleflow_browser_tabs";
 
-export const Browser: React.FC = () => {
+export const Browser: React.FC<{ initialUrl?: string | null }> = ({ initialUrl }) => {
     const [tabs, setTabs] = useState<Tab[]>(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
         try {
@@ -115,6 +115,27 @@ export const Browser: React.FC = () => {
             invoke("hide_browser_webview", { id: "browser_content" }).catch(console.error);
         };
     }, [activeTabId, activeTab.url]);
+
+    // Handle initial URL navigation
+    useEffect(() => {
+        if (initialUrl) {
+            // Check if we already have this URL open to avoid duplicates
+            const existingTab = tabs.find(t => t.url === initialUrl);
+            if (existingTab) {
+                setActiveTabId(existingTab.id);
+                setUrlInput(existingTab.url);
+            } else {
+                const newTab: Tab = {
+                    id: Math.random().toString(36).substr(2, 9),
+                    title: new URL(initialUrl).hostname,
+                    url: initialUrl,
+                };
+                setTabs(prev => [...prev, newTab]);
+                setActiveTabId(newTab.id);
+                setUrlInput(newTab.url);
+            }
+        }
+    }, [initialUrl]);
 
     // Handle initial show and component unmount
     useEffect(() => {
